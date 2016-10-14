@@ -1,15 +1,15 @@
-# ¶¯»­Õ¹Ê¾µØÖ·
+# åŠ¨ç”»å±•ç¤ºåœ°å€
 * [home-page]( https://kingziqiang.github.io/animate/)
 
 ***
 
-## Ä£¿é»¯ºÍ×é¼ş¿ª·¢
+## æ¨¡å—åŒ–å’Œç»„ä»¶å¼€å‘
 
-* [Ö¸¶¨·½Ïò¶¯»­](https://kingziqiang.github.io/animate/Ö¸¶¨·½ÏòµÄ¶¯»­">ÑİÊ¾Ò³)
-* [Ö¸¶¨·½Ïò¶¯»­](https://kingziqiang.github.io/animate/¶à¶¯»­¼¯ºÏ)
-* [Ö¸¶¨·½Ïò¶¯»­](https://kingziqiang.github.io/animate/ÊµÏÖÎïÌåÍ¸Ã÷¶È±ä»¯µÄ¶¯»­)
+* [æŒ‡å®šæ–¹å‘åŠ¨ç”»](https://kingziqiang.github.io/animate/æŒ‡å®šæ–¹å‘çš„åŠ¨ç”»)
+* [æŒ‡å®šæ–¹å‘åŠ¨ç”»](https://kingziqiang.github.io/animate/å¤šåŠ¨ç”»é›†åˆ)
+* [æŒ‡å®šæ–¹å‘åŠ¨ç”»](https://kingziqiang.github.io/animate/å®ç°ç‰©ä½“é€æ˜åº¦å˜åŒ–çš„åŠ¨ç”»)
 
 ***
 
-*»¶Ó­¸÷´ójs°®ºÃÕß·ÖÏí×ÊÔ´*
+*æ¬¢è¿å„å¤§jsçˆ±å¥½è€…åˆ†äº«èµ„æº*
 
