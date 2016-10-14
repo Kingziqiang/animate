@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多动画</title>
+    <style type="text/css">
+        html,body{
+            padding:0px;
+            margin:0px;
+        }
+        body{
+            width:100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    .butt{
+        border: 2px #007aff solid;
+        color: #007aff;
+        font-weight: 900;
+        cursor: pointer;
+        -webkit-user-select: none;
+        padding: 5px;
+        width: 100px;
+        height: 50px;
+        line-height: 50%;
+        text-align: center;
+        border-radius: 5px;
+
+    }
+        form{
+            position: absolute;
+            top:50%;
+            left:50%;
+            height:80px;
+            width : 400px;
+            text-align:center;
+            line-height:50%;
+            margin-top:-40px;
+            margin-left: -200px;
+            padding:5px;
+            cursor: pointer;
+        }
+        .down{
+            height:50px;
+            width : 150px;
+            text-align:center;
+            line-height: 50%;
+            margin-top:-25px;
+            margin-left: -75px;
+            padding:8px;
+            cursor: pointer;
+            color: #999999;
+            font-weight: 800;
+        }
+        #div1{
+            width:150px;
+            height: 150px;
+            background: #0fb200;
+            border: 1px solid #ff3333;
+            position: absolute;
+            top:188px;
+            left:638px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <form>
+        <select class="down">
+        <optgroup class="group" label="animation">
+            <option value="left">left</option>
+            <option value="top" >top</option>
+            <option value="Turn round">Turn round</option>
+            <option value="Increase width">Increase width</option>
+            <option value="Increase width">Increase height</option>
+        </optgroup>
+        </select>
+        <button class="butt">Animate it</button>
+    </form>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript">
+        var oDiv = document.getElementById("div1");
+        var oTs = document.getElementsByTagName("option");
+        var butt=document.getElementsByTagName("button")[0];
+        function animate(curEle, direction, target, duration) {
+            var begin = utils.getCss(curEle, direction);
+            var change = target - begin;
+            var times = 0;//当前消耗的总时间
+            var interval = 15;//每走一步消耗的时间
+            function step() {
+                times += interval;
+                if (times < duration) {//时间在规定内，则正常运动
+                 var val = times / duration * change + begin + "px";
+                    utils.setCss(ele,direction,val);
+                } else {//超过规定时间，停止运动
+                    utils.setCss(ele,direction,target);//终点修正，以免出现到不了终点的情况
+                    clearInterval(timer);
+                }
+            }
+            var timer = window.setInterval(step, interval);
+        }
+        var ary = ["left","top","borderRadius","width", "height", "borderRadius"];
+        for (var i = 0; i < oTs.length; i++) {
+            console.log(oTs[i]);
+            ~function (i) {
+                oTs[i].onclick = function () {
+                    animate(oDiv, ary[i], 75, 900)
+                }
+            }(i)
+        }
+        butt.onclick=function(){
+            animate(oDiv, "borderRadius", 75, 900)
+        }
+        console.log(butt)
+    </script>
+
+</body>
+</html>

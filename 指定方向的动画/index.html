@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>可指定方向的动画</title>
+    <style type="text/css">
+        #div1 {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            width: 300px;
+            height: 300px;
+            background: royalblue;
+            border: 1px solid firebrick;
+        }
+        input{
+            color:#007aff;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<input type="button" name="btn" value="变宽">
+<input type="button" name="btn" value="变长">
+<input type="button" name="btn" value="变圆">
+<input type="button" name="btn" value="向左移动">
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    function animate(curEle, direction, target, duration) {
+        var begin = utils.getCss(curEle, direction);
+        var change = target - begin;
+        var times = 0;//当前消耗的总时间
+        var interval = 15;//每走一步消耗的时间
+        function step() {
+            times += interval;
+            if (times < duration) {//时间在规定内，则正常运动
+               var val = times / duration * change + begin + "px";
+                utils.setCss(curEle,direction,val);
+            } else {//超过规定时间，停止运动
+                utils.setCss(curEle,direction,target);//终点修正，以免出现到不了终点的情况
+                clearInterval(timer);
+            }
+        }
+        var timer = window.setInterval(step, interval);
+    }
+    var oBtns = document.getElementsByName("btn");
+    var ary = ["width", "height", "borderRadius", "left"];
+    for (var i = 0; i < oBtns.length; i++) {
+        ~function (i) {
+            oBtns[i].onclick = function () {
+                animate(oDiv, ary[i], 900, 900)
+            }
+        }(i)
+    }
+</script>
+</body>
+</html>

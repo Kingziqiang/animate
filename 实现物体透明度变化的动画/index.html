@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>透明度的变化</title>
+        <style type="text/css">
+        #div1 {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            width: 300px;
+            height: 300px;
+            background: royalblue;
+            border: 1px solid firebrick;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" style="background: black"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    function animate(curEle, direction, target, duration) {
+        var begin = utils.getCss(curEle, direction);
+        var change = target - begin;
+        var times = 0;//当前消耗的总时间
+        var interval = 15;//每走一步消耗的时间
+        function step() {
+            times += interval;
+            if (times < duration) {//时间在规定内，则正常运动
+                var val= times / duration * change + begin;
+                utils.setCss(curEle,direction,val);
+            } else {//超过规定时间，停止运动
+                utils.setCss(curEle,direction,target);//终点修正，以免出现到不了终点的情况
+                clearInterval(timer);
+            }
+        }
+        var timer = window.setInterval(step, interval);
+    }
+   oDiv.onclick=function(){
+       animate(this,"opacity",0.1,900)
+   }
+</script>
+</body>
+</html>
