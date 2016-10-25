@@ -7,7 +7,6 @@
 <body>
     <div id="div1" style="border: 1px solid red;background: dodgerblue;width: 100px;height: 100px;position: absolute;top: 150px;left:200px"></div>
     <input  id="btn" type="button" value="开始" style="width:70px;height:30px;background:#3399cc;border-radius: 5px;cursor: pointer; position: absolute;top:270px;left:215px">
-
     <script type="text/javascript" src="utils.js"></script>
     <script type="text/javascript">
         function animate(curEle,object,duration,callBack){
@@ -69,7 +68,7 @@
         var obj;
         btn.onclick = function () {
             btn.value == "开始" ? (obj = recover, btn.value = "恢复") : (obj = begin, btn.value = "开始");
-            animate(div1, obj, 1000);//div1是运动的元素，obj运动的维度的集合，1000是规定的时间
+            animate(div1, obj, 1000); //div1是运动的元素，obj运动的维度的集合，1000是规定的时间
         }
     </script>
 </body>
