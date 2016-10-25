@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tween</title>
+</head>
+<style>
+    *{
+       padding:0px;
+        margin:0px;
+    }
+    #outer{
+        width:700px;
+        -height:400px;
+        margin: 30px auto;
+        padding:5px;
+    }
+    .input{
+        height:25px;
+        -width :40px;
+        font-size: 15px;
+        cursor: pointer;
+        cursor: pointer;
+    }
+    label{
+        margin: 10px 0px;
+        padding:10px;
+        width :40px;
+        font-size: 15px;
+        line-height: 25px;
+        cursor: pointer;
+    }
+    #outer .center{
+        height:50px;
+        width:650px;
+        margin: 10px 0px;
+        border: 1px blue solid;
+
+    }
+    #outer .inner{
+        width:50px;
+        height: 50px;
+        border:1px solid red;
+        background: red;
+    }
+    #outer .map{
+        margin: 10px 0px;
+        width:650px;
+        height: 250px;
+        border:1px red solid;
+    }
+    #outer .type {
+        margin:30px 0 30px 0 ;
+        padding:20px 0 0 10px;
+        width: 650px;
+        height: 160px;
+        background:#ed6a43;
+    }
+    #idRun{
+        color: red;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+    #idSpeed{
+        font-size: 15px;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+    #outer .last{
+        height:70px;
+        width:650px;
+        padding: 5px;
+        background: #0086b3;
+        border:1px solid #3399cc;
+    }
+    #outer .runCode{
+        margin: 10px 0 0 30px;
+        width: 500px;
+        height:25px;
+        border: 1px solid #0086b3;
+        background: white;
+    }
+</style>
+<body>
+    <div id="outer">
+        <strong>tween算法运动框架演示</strong>
+        <input class="input" type="button" value="使用说明" name="button">
+        <input class="input" type="button" value="实例演示" name="button">
+        <div class="center">
+            <div class="inner"></div>
+        </div>
+        <strong>对应的函数曲线</strong>
+        <div class="map"></div>
+        <div class="type">
+            <p>
+                <strong>选择动画类型：</strong> <br />
+                <label>
+                    <input name="vTween" type="radio" value="zfLinear" checked="checked" />
+                    匀速(直线) </label>
+                <label>
+                    <input name="vTween" type="radio" value="Quad" />
+                    Quadratic </label>
+                <label>
+                    <input name="vTween" type="radio" value="Cubic" />
+                    Cubic </label>
+                <label>
+                    <input name="vTween" type="radio" value="Quart" />
+                    Quartic </label>
+                <label>
+                    <input name="vTween" type="radio" value="Quint" />
+                    Quintic </label>
+                <label>
+                    <input name="vTween" type="radio" value="Sine" />
+                    Sinusoidal </label>
+                <br />
+                <label>
+                    <input name="vTween" type="radio" value="Expo" />
+                    Exponential </label>
+                <label>
+                    <input name="vTween" type="radio" value="Circ" />
+                    Circular </label>
+                <label>
+                    <input name="vTween" type="radio" value="Elastic" />
+                    Elastic </label>
+                <label>
+                    <input name="vTween" type="radio" value="Back" />
+                    Back </label>
+                <label>
+                    <input name="vTween" type="radio" value="zfBounce" />
+                    Bounce </label>
+            </p>
+            <br/>
+            <p> ease类型： <br />
+                <label>
+                    <input name="vEase" type="radio" value="easeIn" checked="checked" />
+                    easeIn 缓进</label>
+                <label>
+                    <input name="vEase" type="radio" value="easeOut" />
+                    easeOut缓出 </label>
+                <label>
+                    <input name="vEase" type="radio" value="easeInOut" />
+                    easeInOut缓进再缓出 </label>
+            </p>
+            <input id="idSpeed" type="button" value="减慢速度" />
+            <input id="idRun" type="button" value='Run' />
+        </div>
+        <div class="last">
+            <strong>生成对应的代码:</strong><br/>
+           <input  class='runCode' type="text" value="111">
+            <input class='input' type="button" value="参数说明">
+        </div>
+    </div>
+
+</body>
+</html>

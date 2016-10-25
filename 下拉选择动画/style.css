@@ -1,0 +1,53 @@
+html,body{
+    margin: 0px;
+    padding:0px;
+}
+#div1{
+    width:100px;
+    height:100px;
+    position: relative;
+    top:0px;
+    left:400px;
+    border: 1px solid blue;
+    background: red;
+    border-radius: 0px;
+
+}
+#outer{
+    overflow: hidden;
+    margin: 0 auto;
+    width: 1026px;
+    height:1000px;
+}
+#main{
+    margin: 40px auto 10px;
+    width:400px;
+    height:100px;
+    text-align: center;
+    line-height: 100px;
+    padding:10px;
+}
+#main .input--dropdown{
+    width:150px;
+    height:50px;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#main .butt{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width:90px;
+    height:50px;
+    border-radius: 3px;
+    border: 2px darkorchid solid;
+    background: white;
+    color: darkorchid;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}

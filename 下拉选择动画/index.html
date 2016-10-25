@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>下拉选择方向动画</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <select id="direction" class="input--dropdown">
+            <optgroup label="Multi direction animation">
+                <option value='multi'>多方向运动</option>
+                <option value="left">横向运动</option>
+                <option value="top">纵向运动</option>
+                <option value="width">宽度变化</option>
+                <option value="height">高度变化</option>
+                <option value="backgroundColor">颜色变化</option>
+                <option value="borderRadius">形状变化</option>
+                <option value="opacity">透明度变化</option>
+            </optgroup>
+        </select>
+        <button id="btn" class="butt">开始</button>
+    </div>
+    <div id="outer">
+        <div id="div1"></div> 
+    </div>
+    
+</body>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+ /*   function animate(ele,obj,duration,callback){
+        //var obj={width:400,height:333,left:900,top:500,opacity:0.2}
+        var oChange={}
+        var oBegin={};
+        var flag=0;//用来记录有多少个有效change的记数器
+        for(var attr in obj){
+            var target=obj[attr];
+            var begin=utils.getCss(ele,attr);
+            var change=target-begin;//现在的change不止于一个方向
+            if(change){//如果起点和终点不等（有效值），则把有效值保存
+                oBegin[attr]=begin;//分别把每个方向的起点保存在oBegin对象上
+                oChange[attr]=change;//分别把每个方向的change保存在这个对象上
+                flag++;
+            }
+            //如果各个方向的change都无效，是不是退出
+        }
+
+
+        var times=0;//记录当前消耗的时间
+        var interval=15;//每步动画的时间间隔
+
+        clearInterval(ele.timer);//防止动画积累
+
+        function step(){
+            times+=interval;
+            if(times<duration){
+                for(var attr in oChange){
+                    var change=oChange[attr];
+                    var begin=oBegin[attr];
+                    var val=times/duration*change+begin;
+                    utils.setCss(ele,attr,val);
+                }
+            }else{
+                utils.setGroupCss(ele,obj);
+                clearInterval(ele.timer);
+                if(typeof callback=="function"){
+                    callback.call(ele);
+                }
+            }
+        }
+        ele.timer=window.setInterval(step,interval);
+    }
+
+
+    btn.onclick=function(e){
+        //animate(div1,"opacity",0,1000);
+        //animate(div1,"left",1000,1000);
+        //只能让ele在一个方向做动画
+        var dire = direction.value;
+        var objBegin = {left:400,top:10,width:100,height:100,backgroundColor:"#f00",borderRadius:0,opacity:0.8};
+        var objEnd;
+        switch(dire){
+            case "multi":
+                objEnd ={left:700,top:300,width:200,height:200,backgroundColor:"#00f",borderRadius:"50%",opacity:0.2};
+                break;
+            case "left":
+                objEnd ={left:500};
+                break;
+            case "top":
+                objEnd ={top:300};
+                break;
+            case "width":
+                objEnd ={width:200};
+                break;
+            case "height":
+                objEnd ={height:200,};
+                break;
+            case "backgroundColor":
+                objEnd ={backgroundColor:"#00f"};
+                break;
+            case "borderRadius":
+                objEnd ={borderRadius:"50%"};
+                break;
+            default:
+                objEnd ={opacity:0.2};
+        }
+
+        animate(div1,objEnd,1000,function(){
+            animate(div1,objBegin,2000);
+        });//div1是运动的元素，obj运动的维度的集合，1000是规定的时间
+
+
+
+    }*/
+      function animate(curEle,obj,duration,callback){
+          //obj={width:300px,height:300px,opacity:0.2,top:800px,left:900px}
+          var oChange={},oBegin={};
+          var flag=0;//计数器（计算change的有效值）
+          for(var attr in obj){
+              var target=obj[attr];
+              var begin=utils.getCss(curEle,attr);
+              var change=target-begin;
+              if(change){//如果change是有效值（起始值和终点值不等）则把对应的键值对保存到对象里
+                  oBegin[attr]=begin;//把每个起始值保存到oBegin对象里
+                  oChange[attr]=change;//把每个终点值保存到oChange对象里
+                  flag++;
+              };
+             // if(flag==0)return;
+          }
+          var times=0;//当前消耗的时间
+          var inteval=15;//每走一步所需要的时间
+          window.clearInterval(curEle.timer);//防止动画累积
+          function step(){
+              times+=inteval;
+              if(times<duration){
+                  for(var attr in oChange){
+                      var begin=oBegin[attr];
+                      var change=oChange[attr];
+                      var val=times/duration*change+begin;
+                      utils.setCss(curEle,attr,val);
+                  }
+              }else{
+                  utils.setGroupCss(curEle,obj);
+                    window.clearInterval(curEle.timer);
+                  if(typeof callback =="function"){
+                      callback.call(curEle);
+                  }
+              }
+          }
+          curEle.timer=window.setInterval(step,inteval);
+      }
+      btn.onclick=function(){
+          var dir=direction.value;
+          //相当于
+          //var dire=document.getElementById("direction");
+         // var dir=direction.value;
+          var objBegin={left:400,top:10,width:100,height:100,backgroundColor:'#f00',borderRadius:0,opacity:0.8};
+          var objEnd;
+          switch(dir){
+              case 'multi':
+                  objEnd={left:700,top:500,width:300,height:300,backgroundColor:"#00f",borderRadius:"50%",opacity:0.2};
+                  break;
+              case'left':
+                  objEnd={left:900};
+                  break;
+              case'top':
+                  objEnd={top:500};
+                  break;
+              case'width':
+                  objEnd={width:300};
+                  break;
+              case'height':
+                  objEnd={height:300};
+                  break;
+              case'backgroundColor':
+                  objEnd={backgroundColor:'blue'};
+                  break;
+              case'borderRadius':
+                  objEnd={borderRadius:'50%'};
+                  break;
+              default :
+                  objEnd={opacity:0.2};
+          }
+          animate(div1,objEnd,1000,function(){
+              animate(div1,objBegin,2000);
+          });//div1是运动的元素，obj运动的维度的集合，1000是规定的时间
+      }
+</script>
+</html>

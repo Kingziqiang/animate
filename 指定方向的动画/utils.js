@@ -1,6 +1,15 @@
 var utils={};
 utils.getCss=function (curEle,attr){
     var val = typeof window.getComputedStyle == "function" ? getComputedStyle(curEle,null)[attr] : curEle.currentStyle[attr];
+    if(attr=="opacity"){//处理IE8及以下透明度问题
+        var reg=/alpha\(opacity=((?:\d|[1-9]\d+)(?:\.\d+)?)\)/;
+        if(reg.test(curEle.style.filter)){
+            return RegExp.$1/100;
+        }else{
+            return 1;
+            //如果没有写opacit则把默认的1返回
+        }
+    }
     if(!isNaN(parseFloat(val))) val = parseFloat(val);
     return val;
 };
