@@ -9,7 +9,12 @@
 * [同时指定多方向的动画](https://kingziqiang.github.io/animate/同时指定多方向的动画)
 * [实现物体透明度变化的动画](https://kingziqiang.github.io/animate/实现物体透明度变化的动画)
 * [指定方向动画](https://kingziqiang.github.io/animate/指定方向的动画)
+* [雪碧图应用](https://kingziqiang.github.io/animate/雪碧图加百叶窗效果/雪碧图%26原理)
+* [百叶窗效果](https://kingziqiang.github.io/animate/雪碧图加百叶窗效果/百叶窗效果%26原理)
 * [简单实现焦点图](https://kingziqiang.github.io/animate/轮播图/轮播图/简单的焦点图)
+* [轮播图-向右](https://kingziqiang.github.io/animate/轮播图/轮播图/轮播图-向右)
+* [轮播图-向左](https://kingziqiang.github.io/animate/轮播图/轮播图/轮播图-向左)
+* [轮播图插件化封装](https://kingziqiang.github.io/animate/轮播图/轮播图插件化封装/轮播图插件化封装)
 
 ***
 
