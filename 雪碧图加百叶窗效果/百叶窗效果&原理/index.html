@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>百叶窗效果</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #context {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+            background: #999;
+            cursor: pointer;
+        }
+        
+
+        #context div {
+            position: absolute;
+            background-image: url(../image/bycxg.png);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+
+<div id="context"></div>
+<br>
+<pre>
+    <h3>百叶窗原理</h3>
+    首先计算好实现百叶窗效果的图片的大小，再把容器oContext分成rows行cols列，然后把图片切割成想要的大小；
+    然后通过DOM的createElement创建相应多的的div（rows*clos）；通过for循环求出各个div的宽高；
+    div.style.width= oContext.offsetWidth / cols;
+    div.style.height= oContext.offsetWidth / rows;
+    在求出div相对容器oContext为参考方向的定位即：
+         var left = i % cols * w;
+         var top = Math.floor(i / cols) * h;
+    通过div.style.backgroundPosition = -l + "px -" + t + "px";（参照对象是各个小div的定位）拼接好图片
+    最后可以通过矩阵和tween动画通过的设置不同时间的定时器可以实百叶窗效果
+
+</pre>
+<script src="tween.js"></script>
+<script src="utils.min.js"></script>
+<script type="text/javascript">
+    var rows = 10, cols = 20, ary = [];
+    var oContext= document.getElementById("context");
+    var h = oContext.offsetHeight / rows;
+    var w = oContext.offsetWidth / cols;
+    for (var i = 0; i < rows * cols; i++) {
+        var ele = document.createElement("div");
+        oContext.appendChild(ele);
+        ele.style.width = w + "px";
+        ele.style.height = h + "px";
+        //i%10 就是列号 （i%cols）
+        //Math.floor(i/10);就是行号 Math.floor(i/cols)
+        //列号*宽是left的值
+        //行号*高点是top的值
+        var l = i % cols * w;
+        ele.l = l;
+        var t = Math.floor(i / cols) * h;
+        ele.style.left = -400 + "px";//l+"px";
+        ele.style.top = t + "px";
+        ele.style.backgroundPosition = -l + "px -" + t + "px";
+        ary.push(ele);
+    }
+    oContext.onclick = function () {
+        for (var i = 0; i < ary.length; i++) {
+            var ele = ary[i];
+            !function (ele) {
+                window.setTimeout(function () {
+                    animate(ele, {left: ele.l}, 600,['Elastic','easeIn']);
+                }, (i % cols) * 200);
+            }(ele)
+        }
+}
+</script>
+</body>
+</html>

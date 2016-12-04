@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+<div id="outer" >
+    <div id="inner">
+        <div style="background:red">一</div>
+        <div style="background:blueviolet">二</div>
+        <div style="background:blue">三</div>
+        <div style="background:orange">四</div>
+        <div style="background:yellow">五</div>
+    </div>
+    <ul class="ul1">
+        <li class="current">一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+    </ul>
+</div>
+<script type="text/javascript" src="../tween.js"></script>
+<script type="text/javascript" src="../utils.min.js"></script>
+<script type="text/javascript">
+    //用js的DOM来初始化HTML结构
+    var oFirstDiv=document.getElementById("inner").getElementsByTagName("div").item(0);
+    var oInner=document.getElementById("inner");
+    var btns=document.getElementsByTagName("li");
+    oInner.appendChild( oFirstDiv.cloneNode(true));
+    oInner.style.width=oInner.offsetWidth+"px";
+    for(var i=0;i<btns.length;i++){
+        btns.item(i).n=i;
+        btns[i].onclick=function(){
+            animate(oInner,{left:this.n*-500},600,1);
+            selector(this.n)
+            step=this.n;
+            window.clearInterval(timer)//清除动画
+            timer=window.setTimeout(function(){//必须写timer= 为清除定时器做准备
+                timer=window.setInterval(autoRight,1000)
+            },3000)
+        }
+    }
+    function selector(n){
+        for(var i=0;i<btns.length;i++){
+            btns[i].className="";
+            if(n==btns.length){
+                n=0;
+            }
+            btns[n].className="current";
+        }
+    }
+    var step=0;
+    function autoRight(){
+        step--;
+        if(step<0){
+            oInner.style.left=-2500+"px";
+            step=btns.length-1;
+        }
+        animate(oInner,{left:step*-500},600,1);
+        selector(step);
+    }
+    var timer=window.setInterval(autoRight,1000);
+    //console.log(oInner.style.width)
+</script>
+</body>
+</html>

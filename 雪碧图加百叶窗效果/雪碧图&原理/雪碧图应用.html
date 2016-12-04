@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>雪碧图应用</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #outer{
+            overflow: hidden;
+            list-style: none;
+            margin: 50px auto;
+            width: 1300px;
+        }
+        .css-script{
+            border: 2px solid #007aff;
+            width: 300px;
+            height: 300px;
+            float: left;
+            margin: 10px;
+            background: url("../image/css-script.jpg") no-repeat 0 0;
+        }
+        .div1{
+              background-position:0px 0px;
+          }
+        .div2{
+            background-position:-300px 0px;
+        }
+        .div3{
+            background-position:0px -300px;
+        }
+        .div4{
+            background-position:-300px -300px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="outer">
+        <li class="css-script div1"></li>
+        <li class="css-script div2"></li>
+        <li class="css-script div3"></li>
+        <li class="css-script div4"></li>
+    </ul>
+<br>
+<pre>
+    <h3>css-script原理</h3>
+    把雪碧图当做显示区域的背景图然后通过background-position定位到需要显示的小图片区域；
+    这样有效减少http请求数量。加速内容显示；
+     <h3>css-script使用场景</h3>
+    1.静态图，不随用户信息的变化而变化
+    2.小图片，图片容量比较小
+    3.加载量比较大
+    4.一些大图不建议拼成雪碧图
+</pre>
+</body>
+</html>

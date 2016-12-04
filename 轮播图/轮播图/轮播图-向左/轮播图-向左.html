@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div style="background:red">一</div>
+        <div style="background:blueviolet">二</div>
+        <div style="background:blue">三</div>
+        <div style="background:orange">四</div>
+        <div style="background:yellow">五</div>
+        <div style="background:red">一</div>
+    </div>
+    <ul class="ul1">
+        <li class="current">一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+    </ul>
+</div>
+<script type="text/javascript" src="../tween.js"></script>
+<script type="text/javascript" src="../utils.min.js"></script>
+<script type="text/javascript">
+    var btn=document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+    var oInner=document.getElementById("inner");
+    for(var i=0;i<btn.length;i++){
+       btn[i].n=i;
+       btn[i].onclick=function(){
+           animate(oInner,{left:this.n*-500},700,1)
+           selector(this.n);
+           step=this.n;//确定下次动画会停在那一页
+           window.clearInterval(timer);//点击时清除动画
+          timer= window.setTimeout(function(){//当点击之后停五秒，然后再每隔两秒运动一次
+              //使用setTimeout和setInterval相结合的方式
+          timer=window.setInterval(autoMove,1000)
+           },2000)
+       }
+   }
+
+    var step=0;
+    function autoMove(){
+        step++;
+        if(step>btn.length){
+            oInner.style.left=0;//这个表达式可以瞬间把oInner从原来的位置切换到第0张
+            step=1;//动画从一张开始
+        }
+        animate(oInner,{left:step*-500},700,1)
+        selector(step);
+    }
+   var timer= window.setInterval(autoMove,1000);
+    function selector(n){
+        for(var i=0;i<btn.length;i++){
+            btn[i].className="";
+            if(n==btn.length){
+                n=0;
+            }
+            btn[n].className="current";
+        }
+    }
+    console.log(btn)
+</script>
+</body>
+</html>

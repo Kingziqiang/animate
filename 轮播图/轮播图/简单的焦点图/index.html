@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>焦点图</title>
+   <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div style="background:red">一</div>
+        <div style="background:blueviolet">二</div>
+        <div style="background:blue">三</div>
+        <div style="background:orange">四</div>
+        <div style="background:yellow">五</div>
+    </div>
+    <ul class="ul1">
+        <li class="current">一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+    </ul>
+</div>
+<script type="text/javascript" src="../tween.js"></script>
+<script type="text/javascript" src="../utils.min.js"></script>
+<script type="text/javascript">
+    var btn=document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+    var oInner=document.getElementById("inner");
+    for(var i=0;i<btn.length;i++){
+       btn[i].n=i;
+       btn[i].onclick=function(){
+           animate(oInner,{left:this.n*-500},300)
+           selector(this.n);
+       }
+   }
+    function selector(n){
+        for(var i=0;i<btn.length;i++){
+            btn[i].className="";
+            btn[n].className="current"
+        }
+    }
+    console.log(btn)
+</script>
+</body>
+</html>
