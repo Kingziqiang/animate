@@ -30,7 +30,7 @@
 
 <div id="context"></div>
 <br>
-<pre>
+    <pre>
     <h3>百叶窗原理</h3>
     首先计算好实现百叶窗效果的图片的大小，再把容器oContext分成rows行cols列，然后把图片切割成想要的大小；
     然后通过DOM的createElement创建相应多的的div（rows*clos）；通过for循环求出各个div的宽高；
@@ -41,8 +41,7 @@
          var top = Math.floor(i / cols) * h;
     通过div.style.backgroundPosition = -l + "px -" + t + "px";（参照对象是各个小div的定位）拼接好图片
     最后可以通过矩阵和tween动画通过的设置不同时间的定时器可以实百叶窗效果
-
-</pre>
+    </pre>
 <script src="tween.js"></script>
 <script src="utils.min.js"></script>
 <script type="text/javascript">
@@ -76,7 +75,7 @@
                 }, (i % cols) * 200);
             }(ele)
         }
-}
+    }
 </script>
 </body>
 </html>
